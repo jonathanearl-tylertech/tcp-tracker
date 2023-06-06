@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Github from '../icons/github.svelte';
 	import Letter from '../icons/letter.svelte';
-	import Tyler from '../icons/tyler.svelte';
 	import Harness from '../icons/harness.svelte';
 
 	const projects = [
@@ -72,56 +71,32 @@
 		`${baseUrl}${path}`.replace('{env}', 'tylerportico').replace('{customer}', customer);
 </script>
 
-<forge-scaffold>
-	<div slot="header" class="header">
-		<forge-app-bar>
-			<span slot="logo">
-				<Tyler />
+<forge-list dense>
+	{#each projects as item}
+		<forge-list-item>
+			<span slot="title">{item.project}</span>
+			<span slot="trailing" class="trailing">
+				{#if item.github}
+					<a href={item.github}><Github /></a>
+				{/if}
+				{#if item.harness}
+					<a href={item.harness}><Harness /></a>
+				{/if}
+				{#if item.rum}
+					<a class="rum" href={item.rum}><Letter letterValue="rum"/></a>
+				{/if}
+				{#if item.logs}
+					<a href={item.logs}><Letter letterValue="logs"/></a>
+				{/if}
+				{#if item.baseUrl}
+					<a class="ci" href={ciUrl(item.baseUrl, item.path)}><Letter letterValue="ci" /></a>
+					<a href={qaUrl(item.baseUrl, item.path)}><Letter letterValue="qa" /></a>
+					<a href={prodUrl(item.baseUrl, item.path)}><Letter letterValue="prod" /></a>
+				{/if}
 			</span>
-			<span slot="title">Tracker</span>
-			<forge-app-bar-profile-button
-				slot="end"
-				profile-button="true"
-				avatar-text="First Last"
-				full-name="First Last"
-				email="first.last@tylertech.com"
-			/>
-		</forge-app-bar>
-	</div>
-
-	<asside slot="body-left">
-		<h1>hi</h1>
-	</asside>
-
-	<main slot="body" class="app-body">
-		<forge-list dense>
-			{#each projects as item}
-				<forge-list-item>
-					<span slot="title">{item.project}</span>
-					<span slot="trailing" class="trailing">
-						{#if item.github}
-							<a href={item.github}><Github /></a>
-						{/if}
-						{#if item.harness}
-							<a href={item.harness}><Harness /></a>
-						{/if}
-						{#if item.rum}
-							<a class="rum" href={item.rum}><Letter letterValue="rum"/></a>
-						{/if}
-						{#if item.logs}
-							<a href={item.logs}><Letter letterValue="logs"/></a>
-						{/if}
-						{#if item.baseUrl}
-							<a class="ci" href={ciUrl(item.baseUrl, item.path)}><Letter letterValue="ci" /></a>
-							<a href={qaUrl(item.baseUrl, item.path)}><Letter letterValue="qa" /></a>
-							<a href={prodUrl(item.baseUrl, item.path)}><Letter letterValue="prod" /></a>
-						{/if}
-					</span>
-				</forge-list-item>
-			{/each}
-		</forge-list>
-	</main>
-</forge-scaffold>
+		</forge-list-item>
+	{/each}
+</forge-list>
 
 <style>
 	forge-list {
