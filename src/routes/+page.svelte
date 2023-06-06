@@ -12,7 +12,7 @@
 			baseUrl: 'https://{customer}-admin.{env}.com',
 			path: '/org/admin-center/api/appconfig',
 			rum: 'https://app.datadoghq.com/rum/performance-monitoring?from_ts=1685947561319&live=true&query=%40application.id%3A395cd87b-c09e-4792-b33e-3fbf83cda80b+env%3Atcpprod-1&to_ts=1686033961319',
-			logs: 'https://app.datadoghq.com/logs?query=service%3Atcp-admincenter-shell&cols=host%2Cservice&index=%2A&messageDisplay=inline&stream_sort=desc&viz=stream&from_ts=1685947741896&to_ts=1686034141896&live=true',
+			logs: 'https://app.datadoghq.com/logs?query=service%3Atcp-admincenter-shell&cols=host%2Cservice&index=%2A&messageDisplay=inline&stream_sort=desc&viz=stream&from_ts=1685947741896&to_ts=1686034141896&live=true'
 		},
 		{
 			project: 'tcp-admincenter-dashboard',
@@ -22,7 +22,7 @@
 			baseUrl: 'https://{customer}-admin.{env}.com',
 			path: '/org/admin-center/dashboard',
 			rum: 'https://app.datadoghq.com/rum/performance-monitoring?from_ts=1685947561319&live=true&query=%40application.id%3A395cd87b-c09e-4792-b33e-3fbf83cda80b+env%3Atcpprod-1&to_ts=1686033961319',
-			logs: 'https://app.datadoghq.com/logs?query=service%3Atcp-admincenter-dashboard-mfe&cols=host%2Cservice&index=%2A&messageDisplay=inline&stream_sort=desc&viz=stream&from_ts=1685947833421&to_ts=1686034233421&live=true',
+			logs: 'https://app.datadoghq.com/logs?query=service%3Atcp-admincenter-dashboard-mfe&cols=host%2Cservice&index=%2A&messageDisplay=inline&stream_sort=desc&viz=stream&from_ts=1685947833421&to_ts=1686034233421&live=true'
 		},
 		{
 			project: 'tcp-admincenter-usermanagement',
@@ -42,7 +42,7 @@
 			baseUrl: 'https://{customer}-admin.{env}.com',
 			path: '/org/admin-center/configuration',
 			rum: 'https://app.datadoghq.com/rum/performance-monitoring?from_ts=1685947561319&live=true&query=%40application.id%3A395cd87b-c09e-4792-b33e-3fbf83cda80b+env%3Atcpprod-1&to_ts=1686033961319',
-			logs: 'https://app.datadoghq.com/logs?query=service%3Atcp-admincenter-configuration-mfe&cols=host%2Cservice&index=%2A&messageDisplay=inline&stream_sort=desc&viz=stream&from_ts=1685947833421&to_ts=1686034233421&live=true',
+			logs: 'https://app.datadoghq.com/logs?query=service%3Atcp-admincenter-configuration-mfe&cols=host%2Cservice&index=%2A&messageDisplay=inline&stream_sort=desc&viz=stream&from_ts=1685947833421&to_ts=1686034233421&live=true'
 		},
 		{
 			project: 'tcp-profile-c',
@@ -59,6 +59,12 @@
 			github: 'https://github.com/tyler-technologies/tcp-launcher-e',
 			baseUrl: 'https://{customer}.{env}.com',
 			path: '/portal/enterpriselauncher'
+		},
+		{
+			project: 'tcp-product-config-viewer',
+			github: 'https://github.com/tyler-technologies/tcp-product-config-viewer',
+			baseUrl: 'https://admin.{env}.com/portal',
+			path: '/portal/product-config-viewer'
 		}
 	];
 
@@ -83,10 +89,10 @@
 					<a href={item.harness}><Harness /></a>
 				{/if}
 				{#if item.rum}
-					<a class="rum" href={item.rum}><Letter letterValue="rum"/></a>
+					<a class="rum" href={item.rum}><Letter letterValue="rum" /></a>
 				{/if}
 				{#if item.logs}
-					<a href={item.logs}><Letter letterValue="logs"/></a>
+					<a href={item.logs}><Letter letterValue="logs" /></a>
 				{/if}
 				{#if item.baseUrl}
 					<a class="ci" href={ciUrl(item.baseUrl, item.path)}><Letter letterValue="ci" /></a>
@@ -110,7 +116,8 @@
 		align-items: center;
 	}
 
-	.rum, .ci {
+	.rum,
+	.ci {
 		margin-left: 1em;
 	}
 </style>
