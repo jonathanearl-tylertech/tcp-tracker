@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '18.x'
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
       - run: |
           npm ci
           npm run build
