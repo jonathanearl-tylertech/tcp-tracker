@@ -1,0 +1,10 @@
+name = "tcp-tracker"
+account_id = "5cfb8b3022761fe575f5b584af6b90f9"
+
+main = "./.cloudflare/worker.js"
+site.bucket = "./.cloudflare/public"
+
+build.command = "npm run build"
+
+compatibility_date = "2021-11-12"
+workers_dev = true
