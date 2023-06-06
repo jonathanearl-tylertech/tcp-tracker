@@ -22,6 +22,5 @@ jobs:
       - run: |
           npm ci
           npm run build
-          npm i -g wrangler
-          export CLOUDFLARE_API_TOKEN=$"CF_API_TOKEN" wrangler deploy
+          export CLOUDFLARE_API_TOKEN=$"CF_API_TOKEN" npm run deploy
           
